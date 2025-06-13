@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ET.ViewModels"
+             x:Class="ET.Views.MainPage">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry Placeholder="4-digit Employee ID"
+               Keyboard="Numeric"
+               MaxLength="4"
+               Text="{Binding EmployeeId}" />
+        <Entry Placeholder="Task Description"
+               Text="{Binding TaskDescription}" />
+        <Button Text="Save Entry" Command="{Binding SaveCommand}" />
+        <Button Text="Export Data" Command="{Binding ExportCommand}" />
+        <Button Text="Import Data" Command="{Binding ImportCommand}" />
+        <CollectionView ItemsSource="{Binding Records}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding StartTime, StringFormat='Start: {0:MMM dd HH:mm}'}" />
+                            <Label Text="{Binding EndTime, StringFormat='End: {0:MMM dd HH:mm}'}" />
+                            <Label Text="{Binding TotalPayment, StringFormat='Total: {0:C}'}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
